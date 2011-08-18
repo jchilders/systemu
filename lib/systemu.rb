@@ -274,10 +274,18 @@ if defined? JRUBY_VERSION
 
       exit_code = process.wait_for
       [
-        RubyProcess::RubyStatus.new_process_status(JRuby.runtime, exit_code), 
+        RubyProcess::RubyStatus.new_process_status(JRuby.runtime, exit_code, pid(process)),
         stdout.join, 
         stderr.join
       ]
+    end
+
+    # Get process ID from underlying Java Process object.
+    # See: http://stackoverflow.com/questions/1897655/get-subprocess-id-in-java
+    def pid(process)
+      f = process.getClass.getDeclaredField("pid")
+      f.setAccessible(true)
+      f.get(process)
     end
     
     class StreamReader
