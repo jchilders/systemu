@@ -13,7 +13,7 @@ class SystemUniversal
 #
 # constants
 #
-  SystemUniversal::VERSION = '2.3.0' unless SystemUniversal.send(:const_defined?, :VERSION)
+  SystemUniversal::VERSION = '2.3.1' unless SystemUniversal.send(:const_defined?, :VERSION)
   def SystemUniversal.version() SystemUniversal::VERSION end
   def version() SystemUniversal::VERSION end
 #
@@ -261,7 +261,7 @@ end
 # some monkeypatching for JRuby
 if defined? JRUBY_VERSION
   require 'jruby'
-  import org.jruby.RubyProcess
+  java_import org.jruby.RubyProcess
         
   class SystemUniversal
     def systemu
