@@ -265,7 +265,11 @@ if defined? JRUBY_VERSION
         
   class SystemUniversal
     def systemu
-      split_argv = JRuby::PathHelper.smart_split_command @argv
+      if @argv.is_a?(Array)
+        split_argv = @argv
+      else
+        split_argv = JRuby::PathHelper.smart_split_command @argv
+      end
       process = java.lang.Runtime.runtime.exec split_argv.to_java(:string)
       
       stdout, stderr = [process.input_stream, process.error_stream].map do |stream|
