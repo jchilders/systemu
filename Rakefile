@@ -1,7 +1,7 @@
 This.rubyforge_project = 'codeforpeople'
 This.author = "Ara T. Howard"
 This.email = "ara.t.howard@gmail.com"
-This.homepage = "https://github.com/ahoward/#{ This.lib }"
+This.homepage = "https://github.com/jchilders/#{ This.lib }"
 
 task :license do
   open('LICENSE', 'w'){|fd| fd.puts "same as ruby's"}
